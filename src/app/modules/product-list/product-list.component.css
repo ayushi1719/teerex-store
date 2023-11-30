@@ -1,0 +1,32 @@
+.searchbar {
+    margin: 0 2px;
+    margin-top: 40px;
+}
+
+.btn {
+    float: inline-end;
+}
+
+.filter_card {
+    padding: 3px;
+}
+
+/* Add styles for mobile view */
+@media screen and (max-width: 480px) {
+    .filter-section {
+        display: none; /* Hide filter section on mobile */
+    }
+    .filter-section.show-filter {
+        display: block; /* Show filter section when show-filter class is applied */
+    }
+}
+
+/* Add styles for larger screens */
+@media screen and (min-width: 481px) {
+    .filter-section {
+        display: block !important; /* Show filter section on larger screens */
+    }
+    .filter_btn {
+        display: none;
+    }
+}

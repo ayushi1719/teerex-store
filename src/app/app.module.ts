@@ -1,18 +1,49 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MessageService } from 'primeng/api';
+
+// MODULES
+import { MenubarModule } from 'primeng/menubar';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { ChipModule } from 'primeng/chip';
+import { ToastModule } from 'primeng/toast';
+import { FormsModule } from '@angular/forms';
+import { CheckboxModule } from 'primeng/checkbox';
+
+
+// COMPONENTS
+import { ProductListComponent } from './modules/product-list/product-list.component';
+import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
+import { TestComponent } from './test/test.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductListComponent,
+    ShoppingCartComponent,
+    TestComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MenubarModule,
+    InputTextModule,
+    ButtonModule,
+    ChipModule,
+    ToastModule,
+    FormsModule,
+    CheckboxModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

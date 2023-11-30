@@ -1,0 +1,22 @@
+img {
+    float: inline-start;
+    display: block;
+}
+
+h4 {
+    display: inline-block;
+}
+
+.max-reached-message {
+    color: red;
+    margin-top: 5px;
+    /* Add any desired spacing */
+}
+
+@media screen and (max-width: 480px) {
+    .prod_item {
+        margin-left: 2vw;
+        /* margin-right: 2vw; */
+        margin-bottom: 2vh;
+    }
+}

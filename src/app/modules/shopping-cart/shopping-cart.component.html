@@ -1,0 +1,53 @@
+<h3> SHOPPING CART </h3> <br>
+
+<div class="container">
+    <div class="row">
+        <div *ngIf="cartLength == 0">
+            <div class="col-md-8 mx-auto">
+                <h3> No Products. <br> Please add products to Cart</h3>
+            </div>
+        </div>
+        <div *ngIf="cartLength > 0">
+            <div class="col-sm-8 mx-auto" *ngFor="let item of shoppingCartList" style="margin-bottom: 20px;">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="card-img-top"
+                                src="https://wgmimedia.com/wp-content/uploads/2023/06/tshirt-design-prompts-1024x683.jpg"
+                                alt="Tshirt">
+                        </div>
+                        <div class="col-md-3 mt-2 prod_item">
+                            <p> <b>{{item.name}}</b> </p>
+                            <p> <b>Rs. {{item.price}}</b> </p>
+                        </div>
+                        <div class="col-md-4 mt-3">
+                            <input type="number" class="form-control" [(ngModel)]="item.used_quantity"
+                                [ngModelOptions]="{standalone:true}" value="{{item.used_quantity}}"
+                                (change)="updateTotalPrice(item)" min="0" max="{{item.quantity}}" placeholder="Qty">
+                        </div>
+                        <div class="col-md-2 mt-3 prod_item">
+                            <p-button (click)="deleteItem(item)" icon="pi pi-trash" [raised]="true" [rounded]="true"
+                                severity="danger"></p-button>
+                        </div>
+                    </div>
+
+                </div>
+                <p-chip>
+                    <div class="p-2" style="color: rgb(172, 18, 4) ;"> <b>{{item.used_quantity * item.price}}</b></div>
+                </p-chip>
+                <div *ngIf="item.used_quantity === item.quantity" class="max-reached-message">
+                    Maximum quantity reached!
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br> <br>
+
+<hr>
+
+<div class="ml-5">
+    <h4> Total Amount: </h4> &nbsp;
+    <p-chip>
+        <div class="p-2" style="color: rgb(7, 107, 102) ;"> <b>{{total_price}}</b></div>
+    </p-chip>
+</div> <br><br>
