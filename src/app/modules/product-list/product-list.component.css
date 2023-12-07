@@ -3,29 +3,81 @@
     margin-top: 40px;
 }
 
-.btn {
+.cart_btn {
     float: inline-end;
+    padding: 0 1.5px;
+    border: 2px solid #3B82F6;
+    background-color: #3B82F6;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(33, 48, 255, 0.19), 0 6px 20px 0 rgba(33, 48, 255, 0.19);
+}
+
+.cart_btn:hover {
+    background-color: #00245f;
+}
+
+.cart_btn:active {
+    transform: translate(1px, 1px);
+}
+
+.card {
+    border-radius: 0%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .filter_card {
-    padding: 3px;
+    background-color: rgb(193, 255, 221);
+    padding: 10px;
+}
+
+.filter_title {
+    color: rgb(235, 89, 4);
+    font-weight: bold;
+}
+
+.checkbox-label {
+    margin-left: 6px;
+}
+
+.clear_btn {
+    background-color: white;
+    color: rgb(235, 89, 4);
+    font-weight: bold;
+    border: 2px solid rgb(235, 89, 4);
+    box-shadow: 0 4px 8px 0 rgba(235, 89, 4, 0.2), 0 6px 20px 0 rgba(235, 89, 4, 0.19);
+}
+
+.clear_btn:hover {
+    background-color: rgb(235, 89, 4);
+    color: white;
+    font-weight: bold;
+}
+
+.clear_btn:active {
+    transform: translate(1px, 2px);
 }
 
 /* Add styles for mobile view */
 @media screen and (max-width: 480px) {
     .filter-section {
-        display: none; /* Hide filter section on mobile */
+        display: none;
+        /* Hide filter section on mobile */
     }
+
     .filter-section.show-filter {
-        display: block; /* Show filter section when show-filter class is applied */
+        display: block;
+        /* Show filter section when show-filter class is applied */
     }
 }
 
 /* Add styles for larger screens */
 @media screen and (min-width: 481px) {
     .filter-section {
-        display: block !important; /* Show filter section on larger screens */
+        display: block !important;
+        /* Show filter section on larger screens */
     }
+
     .filter_btn {
         display: none;
     }

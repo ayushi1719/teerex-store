@@ -1,8 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import * as product from 'src/assets/data/product.json';
 import { DataService } from 'src/app/shared/services/data.service';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { Checkbox } from 'primeng/checkbox';
 
 @Component({
     selector: 'app-product-list',
@@ -14,7 +13,7 @@ export class ProductListComponent {
 
     constructor(private _data: DataService, private _api: ApiService) { }
 
-    @ViewChild('filterCheckbox') filterCheckbox!: Checkbox;
+    @ViewChildren('filterCheckbox') filterCheckbox!: QueryList<ElementRef>;
     productList: any[] = (product as any).default;
     selectedFilters: string[] = [];
     filteredProductList: any[] = [];
@@ -29,6 +28,7 @@ export class ProductListComponent {
     filterGenderCheckboxes: any[] = [];
     filterTypeCheckboxes: any[] = [];
     filterPriceCheckboxes: any[] = [];
+    shoppingCartList: any[] = [];
 
 
     ngOnInit(): void {
@@ -37,32 +37,32 @@ export class ProductListComponent {
         this.searchedProductList = this.productList; // initializing the search list 
 
         this.filterColorCheckboxes = [
-            { category:'color', value: 'black'},
-            { category:'color', value: 'blue'},
-            { category:'color', value: 'pink'},
-            { category:'color', value: 'green'},
-            { category:'color', value: 'red'},
-            { category:'color', value: 'grey'},
-            { category:'color', value: 'purple'},
-            { category:'color', value: 'white'},
-            { category:'color', value: 'yellow'}
+            { category: 'color', value: 'black' },
+            { category: 'color', value: 'blue' },
+            { category: 'color', value: 'pink' },
+            { category: 'color', value: 'green' },
+            { category: 'color', value: 'red' },
+            { category: 'color', value: 'grey' },
+            { category: 'color', value: 'purple' },
+            { category: 'color', value: 'white' },
+            { category: 'color', value: 'yellow' }
         ];
 
         this.filterGenderCheckboxes = [
-            { category:'gender', value: 'men'},
-            { category:'gender', value: 'women'}
+            { category: 'gender', value: 'men' },
+            { category: 'gender', value: 'women' }
         ];
 
         this.filterTypeCheckboxes = [
-            { category:'type', value: 'polo'},
-            { category:'type', value: 'hoodie'},
-            { category:'type', value: 'round'}
+            { category: 'type', value: 'polo' },
+            { category: 'type', value: 'hoodie' },
+            { category: 'type', value: 'round' }
         ];
 
         this.filterPriceCheckboxes = [
-            { category:'price', value: '0-300'},
-            { category:'price', value: '301-400'},
-            { category:'price', value: '401-500'}
+            { category: 'price', value: '0-300' },
+            { category: 'price', value: '301-400' },
+            { category: 'price', value: '401-500' }
         ]
     }
 
@@ -73,14 +73,16 @@ export class ProductListComponent {
         // })
     }
 
-    // toggle the filter button
+    // Toggle the filter button
     toggleFilter() {
         this.filterSection = !this.filterSection;
     }
 
+    // Clearing all the filters
     clearAllFilters() {
-        console.log(this.filterCheckbox);
-
+        this.filterCheckbox.forEach((element) => {
+            element.nativeElement.checked = false;
+        });
         this.filteredProductList = this.productList;
     }
 
@@ -92,15 +94,14 @@ export class ProductListComponent {
 
     // Removing specific elements from the array (on de-selecting filter checkbox)
     removeElement(array: any[], value: any) {
+        console.log("REMOVE");
         let index = array.indexOf(value);
         array.splice(index, 1);
         return array;
     }
 
-    // Creating arrays on selecting the filter checkbox
+    // Creating arrays on selecting the filter checkbox and Filtering product list in accordance with the selected filters
     checkBoxFilter(category: any, value: any, event: any) {
-        console.log(event);
-                
         const filterArrays: { [key: string]: any[] } = {
             color: this.colors,
             gender: this.gender,
@@ -108,12 +109,8 @@ export class ProductListComponent {
             price: this.prices
         };
 
-        if (event.checked.length > 0) filterArrays[category].push(value);
+        if (event.target.checked == true) filterArrays[category].push(value);
         else this.removeElement(filterArrays[category], value);
-    }
-
-    // Filtering product list in accordance with the selected filters
-    applyFilters() {
 
         if (this.colors.length === 0 && this.types.length === 0 && this.gender.length === 0) {
             // No filters selected, show all products
@@ -139,8 +136,14 @@ export class ProductListComponent {
         }
     }
 
+
     // Adding product to shopping cart
     addToCart(product: any) {
+        this.shoppingCartList = this._data.getShoppingCartList();
+        // Checking if produc is already in cart
+        if (this.shoppingCartList.some(prod => prod.id == product.id))
+            this._data.showWarn('This product is already in cart');
+
         this._data.setShoppingCartList(product);
     }
 }

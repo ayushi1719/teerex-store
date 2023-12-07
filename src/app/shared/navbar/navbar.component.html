@@ -1,5 +1,7 @@
-<nav class="navbar fixed-top navbar-light" style="background-color: #02beb7;">
-    <a class="navbar-brand" routerLink=""> TeeRex Store </a>
-    <a class="navbar-brand mx-auto" routerLink=""> Products </a>
-    <p-button class="nav-link ms-auto" routerLink="shopping-cart" icon="pi pi-shopping-cart" [raised]="true" severity="danger"></p-button>
+<nav class="navbar fixed-top navbar-light" style="background-color: rgb(243, 208, 8);">
+    <a class="navbar-brand store_title"> TeeRex Store </a>
+    <a class="navbar-brand ms-auto products" routerLink="/product-list" routerLinkActive="active_route_prod"> Products
+    </a>
+    <p-button class="nav-link ms-auto cart_btn" [badge]="cart_length" routerLink="/shopping-cart"
+        icon="pi pi-shopping-cart" [raised]="true"></p-button>
 </nav> <br>

@@ -1,3 +1,17 @@
+#cart_title {
+    margin-top: 40px;
+    text-align: center;
+    color: rgb(136, 4, 172);
+    font-family: "Calibri", sans-serif;
+    font-weight: bold;
+}
+
+#noprod_cart {
+    text-align: center;
+    font-family: "Calibri", sans-serif;
+    color: rgb(172, 4, 49);
+}
+
 img {
     float: inline-start;
     display: block;
@@ -10,13 +24,11 @@ h4 {
 .max-reached-message {
     color: red;
     margin-top: 5px;
-    /* Add any desired spacing */
 }
 
 @media screen and (max-width: 480px) {
     .prod_item {
         margin-left: 2vw;
-        /* margin-right: 2vw; */
         margin-bottom: 2vh;
     }
 }

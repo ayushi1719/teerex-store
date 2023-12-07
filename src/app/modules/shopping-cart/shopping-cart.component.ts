@@ -17,17 +17,12 @@ export class ShoppingCartComponent {
   ngOnInit(): void {
     this.total_price = this._data.totalPrice()!;
     this.shoppingCartList = this._data.getShoppingCartList();
-    this.cartLength = this.calCcartLength();
-  }
-
-  // Calculationg length of shoppping cart
-  calCcartLength() {
-    return this.shoppingCartList.length;
+    this.cartLength = this._data.calCcartLength();
   }
 
   // updating total price
   updateTotalPrice(product: any) {
-    this.total_price = this._data.totalPrice();    
+    this.total_price = this._data.totalPrice();
   }
 
   // Delete the item
@@ -37,7 +32,7 @@ export class ShoppingCartComponent {
 
     // Getting the updated shopping cart list and cart length after deleting the product
     this.shoppingCartList = this._data.getShoppingCartList();
-    this.cartLength = this.calCcartLength();
+    this.cartLength = this._data.calCcartLength();
 
     // Getting the updated total price after increasing the quantity of product
     this.total_price = this._data.totalPrice()!;

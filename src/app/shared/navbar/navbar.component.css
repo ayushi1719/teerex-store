@@ -1,0 +1,18 @@
+nav {
+    padding: 5px;
+}
+
+.store_title {
+    font-weight: bold;
+    color: rgb(73, 1, 66);
+}
+
+.products:hover {
+    color: rgb(2, 80, 109);
+    font-weight: bold;
+}
+
+.active_route_prod {
+    text-decoration: underline;
+    color: rgb(2, 80, 109);
+}

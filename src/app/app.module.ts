@@ -14,12 +14,12 @@ import { ChipModule } from 'primeng/chip';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
+import { BadgeModule } from 'primeng/badge';
 
 
 // COMPONENTS
 import { ProductListComponent } from './modules/product-list/product-list.component';
 import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
-import { TestComponent } from './test/test.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
@@ -27,7 +27,6 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     AppComponent,
     ProductListComponent,
     ShoppingCartComponent,
-    TestComponent,
     NavbarComponent
   ],
   imports: [
@@ -41,7 +40,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     ChipModule,
     ToastModule,
     FormsModule,
-    CheckboxModule
+    CheckboxModule,
+    BadgeModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

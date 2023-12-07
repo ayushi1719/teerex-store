@@ -1,12 +1,10 @@
-<h3> SHOPPING CART </h3> <br>
+<h3 id="cart_title"> SHOPPING CART </h3> <br>
+<div *ngIf="cartLength == 0" id="noprod_cart">
+    <h5> No Products !! <br> Please add products to the Cart</h5>
+</div>
 
 <div class="container">
     <div class="row">
-        <div *ngIf="cartLength == 0">
-            <div class="col-md-8 mx-auto">
-                <h3> No Products. <br> Please add products to Cart</h3>
-            </div>
-        </div>
         <div *ngIf="cartLength > 0">
             <div class="col-sm-8 mx-auto" *ngFor="let item of shoppingCartList" style="margin-bottom: 20px;">
                 <div class="card">
@@ -32,9 +30,8 @@
                     </div>
 
                 </div>
-                <p-chip>
-                    <div class="p-2" style="color: rgb(172, 18, 4) ;"> <b>{{item.used_quantity * item.price}}</b></div>
-                </p-chip>
+
+                <div class="p-2" style="color: rgb(7, 107, 102) ;"> <b>Rs. {{item.used_quantity * item.price}}</b></div>
                 <div *ngIf="item.used_quantity === item.quantity" class="max-reached-message">
                     Maximum quantity reached!
                 </div>
@@ -48,6 +45,6 @@
 <div class="ml-5">
     <h4> Total Amount: </h4> &nbsp;
     <p-chip>
-        <div class="p-2" style="color: rgb(7, 107, 102) ;"> <b>{{total_price}}</b></div>
+        <div class="p-2" style="color: rgb(136, 4, 172) ;"> <b>Rs. {{total_price}}</b></div>
     </p-chip>
 </div> <br><br>
